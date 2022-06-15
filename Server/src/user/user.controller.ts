@@ -6,7 +6,7 @@ import {
 import { AuthDto } from 'dto/auth.dto';
 import { UserService } from './user.service';
 
-@Controller('user')
+@Controller('users')
 export class UserController {
   constructor(private userService: UserService) {}
 

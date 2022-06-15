@@ -1,6 +1,4 @@
 import {
-  BadRequestException,
-  ForbiddenException,
   Injectable,
   NotAcceptableException,
 } from '@nestjs/common';
@@ -8,10 +6,14 @@ import { PrismaService } from './../prisma/prisma.service';
 import { AuthDto } from './../../dto/auth.dto';
 import * as argon from 'argon2';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
+import { AuthService } from 'src/auth/auth.service';
 
 @Injectable()
 export class UserService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private auth: AuthService,
+  ) {}
   async create(dto: AuthDto) {
     const password = await argon.hash(
       dto.password,
@@ -23,8 +25,13 @@ export class UserService {
           password,
         },
       });
-      delete user.password;
-      return user;
+
+      return this.auth.signToken(
+        user.id,
+        user.email,
+        user.firstName,
+        user.lastName,
+      );
     } catch (error) {
       if (
         error instanceof
