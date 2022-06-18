@@ -11,7 +11,6 @@ import { GetUser } from 'src/auth/decorator/get-user.decorator';
 import { JwtGuard } from './../auth/Guard/jwtGuard';
 import { UserService } from './user.service';
 
-@UseGuards(JwtGuard)
 @Controller('users')
 export class UserController {
   constructor(private userService: UserService) {}
@@ -21,6 +20,7 @@ export class UserController {
     return this.userService.create(dto);
   }
 
+  @UseGuards(JwtGuard)
   @Get()
   get(@GetUser() user: User) {
     return user;

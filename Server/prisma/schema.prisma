@@ -43,13 +43,21 @@ model Movie{
   @@map("movies")
 }
 
-model Filter{
+model FilterType{
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  filter_code String
-  filter_name String
-  filter_value String
+  code String @unique  
+  name String
+  filters Filter[]
+  @@map("filterTypes")
+}
+
+model Filter{
+  id Int @id @default(autoincrement())
+  value String @unique  
+  filterType FilterType @relation(fields:[filterTypeId],references: [id])
+  filterTypeId Int
   movies FiltersOnMovies[]
   @@map("filters")
 }

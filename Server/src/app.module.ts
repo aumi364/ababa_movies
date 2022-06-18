@@ -5,8 +5,7 @@ import { FavoriteModule } from './favorite/favorite.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { MovieModule } from './movie/movie.module';
-import { FilterController } from './filter/filter.controller';
-import { FilterModule } from './filter/filter.module';
+import { FilterTypeModule } from './filterType/filterType.module';
 
 @Module({
   imports: [
@@ -18,8 +17,7 @@ import { FilterModule } from './filter/filter.module';
       isGlobal: true,
     }),
     MovieModule,
-    FilterModule,
+    FilterTypeModule,
   ],
-  controllers: [FilterController],
 })
 export class AppModule {}

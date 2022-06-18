@@ -2,18 +2,19 @@ import {
   IsEmail,
   IsNotEmpty,
   IsString,
+  IsArray,
 } from 'class-validator';
 
-export class FilterDto {
+export class FilterTypeDto {
   @IsString()
   @IsNotEmpty()
-  filter_code: string;
+  code: string;
 
   @IsString()
   @IsNotEmpty()
-  filter_name: string;
+  name: string;
 
-  @IsString()
+  @IsArray()
   @IsNotEmpty()
-  filter_value: string;
+  filters: string[];
 }
