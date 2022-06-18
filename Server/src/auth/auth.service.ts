@@ -58,7 +58,7 @@ export class AuthService {
     user: object;
   }> {
     const payload = {
-      sub: userId,
+      id: userId,
       email,
     };
     const secret = this.config.get('JWT_SECRET');
@@ -71,7 +71,7 @@ export class AuthService {
     );
     return {
       user: {
-        uuid: userId,
+        id: userId,
         firstName,
         lastName,
         email,

@@ -18,5 +18,46 @@ model User{
   password  String
   firstName String?
   lastName String?
+  favorites Favorite[]
   @@map("users")
+}
+
+model Favorite{
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  movie Movie @relation(fields:[movieId],references: [id])
+  movieId Int
+  user User @relation(fields:[userId],references: [id])
+  userId Int
+  @@map("favorites")
+}
+
+model Movie{
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name String 
+  favourite Favorite?
+  filters FiltersOnMovies[]
+  @@map("movies")
+}
+
+model Filter{
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  filter_code String
+  filter_name String
+  filter_value String
+  movies FiltersOnMovies[]
+  @@map("filters")
+}
+
+model FiltersOnMovies{
+filter Filter @relation(fields: [filterId], references: [id])
+filterId Int
+movie Movie @relation(fields: [movieId] ,references: [id])
+movieId Int
+@@id([filterId, movieId])
 }
