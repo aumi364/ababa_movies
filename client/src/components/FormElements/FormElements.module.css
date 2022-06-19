@@ -1,0 +1,44 @@
+.formGroup {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.formContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.formGroup input {
+  width: 80%;
+  border: none;
+  border-bottom: 2px solid rgb(7, 7, 7);
+  background: transparent !important;
+  outline: none;
+  border-radius: 0;
+  color: white !important;
+  margin: 1rem;
+  font-size: 5vw;
+}
+.error {
+  position: absolute;
+  top: 90%;
+  left: 10%;
+  font-size: 0.8rem;
+  color: white;
+}
+
+@media (min-width: 600px) {
+  .formGroup input {
+    font-size: 2vw;
+  }
+}
+@media (min-width: 1100px) {
+  .formGroup input {
+    font-size: 1.25vw;
+  }
+}
