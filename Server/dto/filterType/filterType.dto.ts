@@ -1,8 +1,7 @@
 import {
-  IsEmail,
+  IsArray,
   IsNotEmpty,
   IsString,
-  IsArray,
 } from 'class-validator';
 
 export class FilterTypeDto {
