@@ -1,0 +1,25 @@
+.logIn {
+  background-color: #f9d403;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fe2ebb;
+  width: 250px;
+  height: 300px;
+  border-radius: 10px;
+  box-shadow: 3px 2px 17px 0px rgba(0, 0, 0, 0.75);
+}
+
+@media (min-width: 600px) {
+  .loginContainer {
+    width: 500px;
+    height: 500px;
+  }
+}
