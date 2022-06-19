@@ -1,11 +1,14 @@
 import axios from "axios";
 // import { store } from "store";
 
+export const baseUrl = process.env.REACT_APP_BACKEND_URL;
+
 const http = axios.create({
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
   },
+  baseURL: baseUrl,
 });
 
 http.interceptors.request.use((config: any) => {
@@ -18,16 +21,5 @@ http.interceptors.request.use((config: any) => {
 
   return config;
 });
-
-// http.interceptors.response.use(null, error => {
-//   if (error?.response?.message) {
-//     message.error(error.response.message);
-//     return { error };
-//   }
-//
-//   message.error('Something went wrong!');
-//
-//   return { error };
-// });
 
 export default http;

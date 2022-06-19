@@ -3,6 +3,11 @@ import Input from "../../components/FormElements/Input";
 import formStyle from "../../components/FormElements/FormElements.module.css";
 import Button from "../../components/Button/Button";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useAppDispatch } from "../../app/hooks";
+import { loginReq } from "../../slices/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch } from "../../app/store";
+import { useNavigate } from "react-router-dom";
 type Props = {};
 
 type Form = {
@@ -14,11 +19,18 @@ const LoginForm = (props: Props) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Form>();
 
-  const onSubmit: SubmitHandler<Form> = (data) => console.log(data);
+  const dispatch = useDispatch<AppDispatch>();
+  const { isSuccess } = useSelector((state: any) => state.auth);
+  const navigate = useNavigate();
+
+  const onSubmit: SubmitHandler<Form> = (data) =>
+    dispatch(loginReq({ formData: data, url: "/auth/login" }));
+  if (isSuccess) {
+    navigate("home");
+  }
   console.log(errors);
   return (
     <form className={formStyle.formContainer} onSubmit={handleSubmit(onSubmit)}>
