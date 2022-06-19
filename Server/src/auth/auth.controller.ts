@@ -3,7 +3,7 @@ import {
   Controller,
   Post,
 } from '@nestjs/common';
-import { AuthDto } from './../../dto/auth.dto';
+import { AuthDto } from '../../dto/auth/auth.dto';
 import { AuthService } from './auth.service';
 @Controller('auth')
 export class AuthController {

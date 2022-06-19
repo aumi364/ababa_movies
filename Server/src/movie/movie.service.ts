@@ -4,7 +4,8 @@ import {
   Post,
 } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { MovieDto } from './../../dto/movie.dto';
+import { MovieDto } from '../../dto/movie/movie.dto';
+import { MovieQueryDto } from './../../dto/movie/movie.query.dto';
 
 @Injectable()
 export class MovieService {
@@ -34,7 +35,53 @@ export class MovieService {
     }
   }
   @Get()
-  get() {
-    return 'hello';
+  async get(query: MovieQueryDto) {
+    let movies: any = [];
+    const {
+      offset,
+      limit,
+      filter,
+    }: MovieQueryDto = query;
+    if (offset && limit) {
+      movies = await this.prisma.movie.findMany({
+        skip: Number((offset - 1) * limit),
+        take: Number(limit),
+        include: {
+          filters: {
+            select: {
+              filter: true,
+            },
+          },
+        },
+      });
+    } else {
+      movies = await this.prisma.movie.findMany({
+        include: {
+          filters: {
+            select: {
+              filter: true,
+            },
+          },
+        },
+      });
+    }
+
+    if (filter) {
+      let filterQueries = [];
+      if (!Array.isArray(filter)) {
+        filterQueries.push(filter);
+      } else {
+        filterQueries = filter;
+      }
+
+      movies = movies.filter((movie: any) =>
+        movie.filters.some((filters: any) => {
+          return filterQueries.includes(
+            filters.filter.value,
+          );
+        }),
+      );
+    }
+    return movies;
   }
 }

@@ -1,27 +1,29 @@
 import {
-  Controller,
-  UseGuards,
   Body,
-  Post,
+  Controller,
   Get,
+  Post,
+  Query,
+  UseGuards,
 } from '@nestjs/common';
+import { MovieDto } from '../../dto/movie/movie.dto';
+import { MovieQueryDto } from './../../dto/movie/movie.query.dto';
 import { JwtGuard } from './../auth/Guard/jwtGuard';
 import { MovieService } from './movie.service';
-import { MovieDto } from './../../dto/movie.dto';
 
 @UseGuards(JwtGuard)
 @Controller('movies')
 export class MovieController {
   constructor(
-    private MovieService: MovieService,
+    private movieService: MovieService,
   ) {}
   @Post()
   create(@Body() dto: MovieDto) {
-    return this.MovieService.create(dto);
+    return this.movieService.create(dto);
   }
 
-  @Get()
-  get() {
-    return this.MovieService.get();
+  @Get('?')
+  get(@Query() query: MovieQueryDto) {
+    return this.movieService.get(query);
   }
 }

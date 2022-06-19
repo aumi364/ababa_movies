@@ -3,7 +3,7 @@ import {
   NotAcceptableException,
 } from '@nestjs/common';
 import { PrismaService } from './../prisma/prisma.service';
-import { AuthDto } from './../../dto/auth.dto';
+import { AuthDto } from '../../dto/auth/auth.dto';
 import * as argon from 'argon2';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { AuthService } from 'src/auth/auth.service';

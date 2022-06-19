@@ -3,7 +3,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { PrismaService } from './../prisma/prisma.service';
-import { FilterTypeDto } from './../../dto/filterType.dto';
+import { FilterTypeDto } from '../../dto/filterType/filterType.dto';
 import { JwtGuard } from './../auth/Guard/jwtGuard';
 
 @UseGuards(JwtGuard)

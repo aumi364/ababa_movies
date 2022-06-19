@@ -1,14 +1,13 @@
 import {
-  Controller,
   Body,
-  Post,
+  Controller,
   Get,
+  Post,
   UseGuards,
 } from '@nestjs/common';
-import { FilterTypeService } from './filterType.service';
-import { Filter } from '@prisma/client';
-import { FilterTypeDto } from './../../dto/filterType.dto';
+import { FilterTypeDto } from '../../dto/filterType/filterType.dto';
 import { JwtGuard } from './../auth/Guard/jwtGuard';
+import { FilterTypeService } from './filterType.service';
 
 @UseGuards(JwtGuard)
 @Controller('filterTypes')

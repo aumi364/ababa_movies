@@ -56,8 +56,8 @@ model FilterType{
 model Filter{
   id Int @id @default(autoincrement())
   value String @unique  
-  filterType FilterType @relation(fields:[filterTypeId],references: [id])
-  filterTypeId Int
+  filterType FilterType? @relation(fields:[filterTypeId],references: [id])
+  filterTypeId Int?
   movies FiltersOnMovies[]
   @@map("filters")
 }

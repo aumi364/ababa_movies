@@ -6,6 +6,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { MovieModule } from './movie/movie.module';
 import { FilterTypeModule } from './filterType/filterType.module';
+import { FilterModule } from './filter/filter.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { FilterTypeModule } from './filterType/filterType.module';
     }),
     MovieModule,
     FilterTypeModule,
+    FilterModule,
   ],
 })
 export class AppModule {}
