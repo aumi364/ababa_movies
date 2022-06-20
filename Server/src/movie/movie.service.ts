@@ -82,6 +82,69 @@ export class MovieService {
         }),
       );
     }
+
+    movies.forEach(
+      (movie: any) => delete movie.filters,
+    );
     return movies;
+  }
+
+  @Get()
+  async getMovie(params: any) {
+    try {
+      const movie =
+        await this.prisma.movie.findFirst({
+          where: {
+            id: Number(params.id),
+          },
+          include: {
+            filters: {
+              select: {
+                filter: {
+                  include: {
+                    filterType: true,
+                  },
+                },
+              },
+            },
+          },
+        });
+
+      const filterType =
+        await this.prisma.filterType.findMany({
+          select: {
+            code: true,
+          },
+        });
+      const filters = {};
+      movie?.filters.forEach(
+        ({ filter }: any = {}) => {
+          return filterType?.forEach((type) => {
+            if (
+              type.code ===
+              filter?.filterType?.code
+            ) {
+              if (filters[type.code]) {
+                filters[type.code].push(
+                  filter?.value,
+                );
+              } else {
+                filters[type.code] = [
+                  filter?.value,
+                ];
+              }
+            }
+          });
+        },
+      );
+      // const FilterTypeCodes = FilterType.forEach(
+      //   (filter) => (filters[filter.code] = []),
+      // );
+      delete movie.filters;
+      const newMovie = { ...movie, filters };
+      return newMovie;
+    } catch (error) {
+      throw error;
+    }
   }
 }

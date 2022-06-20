@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Post,
   Query,
   UseGuards,
@@ -25,5 +26,9 @@ export class MovieController {
   @Get('?')
   get(@Query() query: MovieQueryDto) {
     return this.movieService.get(query);
+  }
+  @Get(':id')
+  getMovie(@Param() params): any {
+    return this.movieService.getMovie(params);
   }
 }

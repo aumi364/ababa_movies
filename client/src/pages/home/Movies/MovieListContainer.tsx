@@ -21,6 +21,7 @@ const MovieListContainer = (props: Props) => {
       {data?.map((movie: any) => {
         return (
           <Card
+            key={movie?.id}
             image={movie?.imageUrl}
             description={movie?.description}
             name={movie?.name}
