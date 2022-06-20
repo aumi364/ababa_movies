@@ -12,12 +12,12 @@ const http = axios.create({
 });
 
 http.interceptors.request.use((config: any) => {
-  //   const state = store.getState();
+  const token = localStorage.getItem("token");
 
-  //   if (state?.Auth?.token) {
-  //     const token = `jwt ${state.Auth.token}`;
-  //     config.headers.Authorization = token;
-  //   }
+  if (token) {
+    const bearerToken = `Bearer ${token}`;
+    config.headers.Authorization = bearerToken;
+  }
 
   return config;
 });

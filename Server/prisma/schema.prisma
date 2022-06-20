@@ -38,6 +38,8 @@ model Movie{
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   name String 
+  description String?
+  imageUrl String?
   favourite Favorite?
   filters FiltersOnMovies[]
   @@map("movies")

@@ -1,0 +1,28 @@
+.homeContainer {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.moviePanel {
+  background-color: #f9d403;
+  flex-basis: calc(100% - 4rem);
+  padding: 2rem;
+}
+.selectedMoviePanel {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .selectedMoviePanel {
+    background-color: white;
+    flex-basis: calc(50% - 4rem);
+    padding: 2rem;
+  }
+  .moviePanel {
+    background-color: #f9d403;
+    border-radius: 0px 15px 15px 0px;
+    flex-basis: calc(50% - 4rem);
+    padding: 2rem;
+  }
+}
