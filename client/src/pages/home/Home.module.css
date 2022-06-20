@@ -18,7 +18,22 @@
     background-color: white;
     flex-basis: calc(50% - 4rem);
     padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  .noDataImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .noDataImage img {
+    width: 100%;
+    height: 60vh;
+    padding: 20px;
+  }
+
   .moviePanel {
     background-color: #f9d403;
     border-radius: 0px 15px 15px 0px;

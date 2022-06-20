@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../../app/store";
 import Card from "../../../components/MovieCard/Card";
-import { getMovies } from "../../../slices/movieSlice";
+import { getMovies, setMovieId } from "../../../slices/movieSlice";
 import style from "./Movies.module.css";
 
 type Props = {};
@@ -13,8 +13,14 @@ const MovieListContainer = (props: Props) => {
   //   console.log(movieState);
 
   useEffect(() => {
-    dispatch(getMovies({ url: "/movies?limit=2&offset=2" }));
+    dispatch(getMovies({ url: "/movies" }));
   }, []);
+
+  const selectedMovieIdHandler = (id: string) => {
+    return () => {
+      dispatch(setMovieId(id));
+    };
+  };
   console.log(data);
   return (
     <div className={style.movieListContainer}>
@@ -25,6 +31,7 @@ const MovieListContainer = (props: Props) => {
             image={movie?.imageUrl}
             description={movie?.description}
             name={movie?.name}
+            onClick={selectedMovieIdHandler(movie?.id)}
           />
         );
       })}

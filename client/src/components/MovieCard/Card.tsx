@@ -6,12 +6,13 @@ type Props = {
   description: string;
   filter?: any;
   name: string;
+  onClick: (param: any) => void;
 };
 
-const Card = ({ image, description, filter, name }: Props) => {
+const Card = ({ image, description, filter, name, onClick }: Props) => {
   return (
     <div className={style.cardContainer}>
-      <div className={style.cardImage}>
+      <div className={style.cardImage} onClick={onClick}>
         <img src={image} alt="poster" />
       </div>
       <div className={style.cardBody}>
