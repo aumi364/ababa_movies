@@ -56,7 +56,8 @@ Published Link - [Visit](https://documenter.getpostman.com/view/4063810/UzBnrnLS
 
 ## Features
 
-- Pagination
+- Pagination (Default page klimit is 10)\
+   Managed pagination with custom [hook](client/src/hooks/usePagination.ts)
 - Search with name (It's case sensitive!!)
 - Managed the store with Redux Toolkit
 - Managed Async operations with Redux Thunk and Axios
