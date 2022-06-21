@@ -19,6 +19,8 @@ export class MovieService {
         await this.prisma.movie.create({
           data: {
             name: dto.name,
+            description: dto.description,
+            imageUrl: dto.imageUrl,
             filters: {
               create: dto.filterIds.map((id) => ({
                 filter: {

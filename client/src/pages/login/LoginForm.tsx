@@ -7,7 +7,7 @@ import { useAppDispatch } from "../../app/hooks";
 import { loginReq } from "../../slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../app/store";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 type Props = {};
 
 type Form = {
@@ -24,35 +24,42 @@ const LoginForm = (props: Props) => {
 
   const dispatch = useDispatch<AppDispatch>();
   const { isSuccess } = useSelector((state: any) => state.auth);
-  const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<Form> = (data) =>
+  const onSubmit: SubmitHandler<Form> = (data) => {
+    console.log(data);
     dispatch(loginReq({ formData: data, url: "/auth/login" }));
-  if (isSuccess) {
-    navigate("home");
-  }
-  console.log(errors);
+  };
+
   return (
-    <form className={formStyle.formContainer} onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        register={register}
-        name="email"
-        type="email"
-        placeholder="Email"
-        required
-        error={errors.email}
-      />
-      <Input
-        register={register}
-        name="password"
-        type="password"
-        placeholder="Password"
-        required
-        error={errors.password}
-      />
-      <Button type="submit">Submit</Button>
-      {/* {console.log(errors)} */}
-    </form>
+    <>
+      {isSuccess ? (
+        <Navigate to="home" />
+      ) : (
+        <form
+          className={formStyle.formContainer}
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <Input
+            register={register}
+            name="email"
+            type="email"
+            placeholder="Email"
+            required
+            error={errors.email}
+          />
+          <Input
+            register={register}
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+            error={errors.password}
+          />
+          <Button type="submit">Submit</Button>
+          {/* {console.log(errors)} */}
+        </form>
+      )}
+    </>
   );
 };
 

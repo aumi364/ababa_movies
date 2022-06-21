@@ -12,6 +12,7 @@ const Home = (props: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const logoutHandler = () => {
     dispatch(logout());
+    window.location.href = "/";
   };
   return (
     <div className={style.homeContainer}>

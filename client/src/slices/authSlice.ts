@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import http from "../https/https";
+import { toast } from "react-hot-toast";
 
 interface authState {
   token: string | any;
@@ -43,6 +44,7 @@ const AuthSlice = createSlice({
       localStorage.setItem("token", state.token);
       state.loading = false;
       state.isSuccess = true;
+      toast.success("Welcome Friend!");
     });
 
     builder.addCase(loginReq.pending, (state, action: PayloadAction<any>) => {
@@ -55,6 +57,7 @@ const AuthSlice = createSlice({
       state.loading = false;
       state.isSuccess = false;
       localStorage.removeItem("token");
+      toast.error("Wrong credentials!");
     });
   },
 });

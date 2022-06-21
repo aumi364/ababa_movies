@@ -9,6 +9,14 @@ export class MovieDto {
   @IsNotEmpty()
   name: string;
 
+  @IsString()
+  @IsNotEmpty()
+  description: string;
+
+  @IsString()
+  @IsNotEmpty()
+  imageUrl: string;
+
   @IsArray()
   @IsNotEmpty()
   filterIds: number[];

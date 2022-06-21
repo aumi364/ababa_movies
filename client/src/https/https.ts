@@ -27,7 +27,9 @@ http.interceptors.response.use(
     console.log(error.response);
     if (error.response.data.statusCode === 401) {
       localStorage.removeItem("token");
-      window.location.href = "/";
+      if (window.location.pathname !== "/") {
+        window.location.href = "/";
+      }
     }
     return Promise.reject(error);
   }

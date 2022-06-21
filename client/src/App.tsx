@@ -10,7 +10,6 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 
 function App() {
-  
   function PrivateRoute({ children }: any) {
     const isLoggedIn = localStorage.getItem("token");
     return isLoggedIn ? children : <Navigate to={"/"} />;

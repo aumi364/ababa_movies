@@ -81,6 +81,8 @@
   background: #f9d403;
   color: #fe2ebb;
   cursor: pointer;
+  position: absolute;
+  right: 0;
 }
 
 @media (min-width: 1100px) {
@@ -89,6 +91,9 @@
     border-radius: 0px 15px 15px 0px;
     flex-basis: calc(50% - 4rem);
     padding: 2rem;
+  }
+  .logout {
+    background: white;
   }
   .homeContainer {
     flex-direction: row;

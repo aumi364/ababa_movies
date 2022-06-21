@@ -41,23 +41,7 @@ export class FilterTypeService {
       const filterTypes =
         await this.prisma.filterType.findMany({
           include: {
-            filters: {
-              include: {
-                movies: {
-                  select: {
-                    movie: {
-                      include: {
-                        filters: {
-                          select: {
-                            filter: true,
-                          },
-                        },
-                      },
-                    },
-                  },
-                },
-              },
-            }, // Return all fields
+            filters: true, // Return all fields
           },
         });
 
