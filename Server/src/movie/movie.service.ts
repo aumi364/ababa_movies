@@ -3,6 +3,7 @@ import {
   Injectable,
   Post,
 } from '@nestjs/common';
+import { User } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { MovieDto } from '../../dto/movie/movie.dto';
 import { MovieQueryDto } from './../../dto/movie/movie.query.dto';
@@ -35,12 +36,13 @@ export class MovieService {
     }
   }
   @Get()
-  async get(query: MovieQueryDto) {
+  async get(query: MovieQueryDto, user: User) {
     let movies: any = [];
     const {
       offset,
       limit,
       filter,
+      name,
     }: MovieQueryDto = query;
     if (offset && limit) {
       movies = await this.prisma.movie.findMany({
@@ -53,6 +55,11 @@ export class MovieService {
             },
           },
         },
+        where: {
+          name: {
+            contains: name,
+          },
+        },
       });
     } else {
       movies = await this.prisma.movie.findMany({
@@ -61,6 +68,11 @@ export class MovieService {
             select: {
               filter: true,
             },
+          },
+        },
+        where: {
+          name: {
+            contains: name,
           },
         },
       });
@@ -83,14 +95,45 @@ export class MovieService {
       );
     }
 
-    movies.forEach(
-      (movie: any) => delete movie.filters,
+    // const newMovies = movies.map(
+    //   async (movie: any) => {
+    //     delete movie.filters;
+    //     const favorite =
+    //       (await this.prisma.favorite.findFirst({
+    //         where: {
+    //           movieId: Number(movie.id),
+    //           userId: Number(user.id),
+    //         },
+    //       })) || null;
+    //     return { ...movie };
+    //   },
+    // );
+
+    const newMovies = await Promise.all(
+      movies.map(async (movie) => {
+        delete movie.filters;
+        const favorite =
+          (await this.prisma.favorite.findFirst({
+            where: {
+              movieId: Number(movie.id),
+              userId: Number(user.id),
+            },
+            select: {
+              id: true,
+            },
+          })) || null;
+        return {
+          ...movie,
+          favorite,
+        };
+      }),
     );
-    return movies;
+    const count = await this.prisma.movie.count();
+    return { count: count, data: newMovies };
   }
 
   @Get()
-  async getMovie(params: any) {
+  async getMovie(params: any, user: User) {
     try {
       const movie =
         await this.prisma.movie.findFirst({
@@ -109,6 +152,16 @@ export class MovieService {
             },
           },
         });
+      const favorite =
+        (await this.prisma.favorite.findFirst({
+          where: {
+            movieId: Number(params.id),
+            userId: Number(user.id),
+          },
+          select: {
+            id: true,
+          },
+        })) || null;
 
       const filterType =
         await this.prisma.filterType.findMany({
@@ -116,7 +169,9 @@ export class MovieService {
             code: true,
           },
         });
+
       const filters = {};
+
       movie?.filters.forEach(
         ({ filter }: any = {}) => {
           return filterType?.forEach((type) => {
@@ -141,7 +196,11 @@ export class MovieService {
       //   (filter) => (filters[filter.code] = []),
       // );
       delete movie.filters;
-      const newMovie = { ...movie, filters };
+      const newMovie = {
+        ...movie,
+        filters,
+        favorite,
+      };
       return newMovie;
     } catch (error) {
       throw error;

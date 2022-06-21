@@ -11,6 +11,7 @@ interface moveiState {
   selectedMovieData: any;
   isSelectedMovieLoading: boolean;
   isSselectedMovieError: boolean;
+  count: number;
 }
 
 type getMovieReq = {
@@ -25,6 +26,7 @@ const initState = {
   selectedMovieData: null,
   isSelectedMovieLoading: false,
   isSselectedMovieError: false,
+  count: 0,
 } as moveiState;
 
 export const getMovies = createAsyncThunk(
@@ -56,18 +58,17 @@ const MovieSlice = createSlice({
     builder.addCase(
       getMovies.fulfilled,
       (state, action: PayloadAction<any>) => {
-        state.data = action.payload;
+        state.data = action.payload?.data;
+        state.count = action.payload?.count;
         state.loading = false;
       }
     );
 
     builder.addCase(getMovies.pending, (state, action: PayloadAction<any>) => {
-      state.data = action.payload;
       state.loading = true;
     });
 
     builder.addCase(getMovies.rejected, (state, action: PayloadAction<any>) => {
-      state.data = action.payload;
       state.loading = false;
     });
     builder.addCase(

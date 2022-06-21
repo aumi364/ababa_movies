@@ -19,9 +19,7 @@ const Card = ({ image, description, filter, name, onClick }: Props) => {
         <div className={style.cardName}>
           <h3>{name}</h3>
         </div>
-        <div className={style.cardDescription}>
-          <p>{description}</p>
-        </div>
+       
       </div>
       {/* <div className={style.rating}>{filter.rating}</div> */}
     </div>

@@ -31,7 +31,22 @@
   font-size: 0.8rem;
   color: white;
 }
-
+.search {
+  margin: 10px 0px;
+  background: white;
+  max-width: 300px;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+.search input {
+  border: none;
+  margin-left: 10px;
+  background: transparent !important;
+  outline: none;
+  border-radius: 0;
+  color: black !important;
+}
 @media (min-width: 600px) {
   .formGroup input {
     font-size: 2vw;

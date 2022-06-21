@@ -21,5 +21,15 @@ http.interceptors.request.use((config: any) => {
 
   return config;
 });
-
+http.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.log(error.response);
+    if (error.response.data.statusCode === 401) {
+      localStorage.removeItem("token");
+      window.location.href = "/";
+    }
+    return Promise.reject(error);
+  }
+);
 export default http;

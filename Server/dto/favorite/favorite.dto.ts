@@ -1,13 +1,10 @@
 import {
   IsNotEmpty,
-  IsString,
+  IsNumber,
 } from 'class-validator';
 
 export class FavoriteDto {
+  @IsNumber()
   @IsNotEmpty()
-  email: string;
-
-  @IsString()
-  @IsNotEmpty()
-  password: string;
+  movieId: number;
 }

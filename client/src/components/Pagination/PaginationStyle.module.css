@@ -1,0 +1,8 @@
+.pagination {
+  display: flex;
+}
+.paginationIcon {
+  color: #fe2ebb;
+  cursor: pointer;
+  padding-right: 10px;
+}
