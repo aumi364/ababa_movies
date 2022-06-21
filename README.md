@@ -8,7 +8,7 @@ If you login successully! You should see this home page.
 
 # Planning
 
-The way I have planned the project
+The way I have planned the project.
 
 ## Figma
 
@@ -20,7 +20,7 @@ At First I have designed the system in Figma.
 
 ## Database
 
-Then I designed the database (Oviously I have changed it a lot ! :v)
+Then I designed the database. (Oviously I have changed it a lot ! :v)
 ![ss](Screenshots/db.png)
 
 # Backend
