@@ -20,7 +20,8 @@ At First I have designed the system in Figma.
 
 ## Database
 
-Then I designed the database. (Oviously I have changed it a lot ! :v)
+Then I designed the database.
+
 ![ss](Screenshots/db.png)
 
 # Backend
