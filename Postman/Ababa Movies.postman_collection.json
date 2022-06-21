@@ -1,0 +1,1001 @@
+{
+	"info": {
+		"_postman_id": "b15fd9fe-35de-4d1d-96b9-ef4569740f35",
+		"name": "Ababa Movies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4063810"
+	},
+	"item": [
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "get movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{root_url}}/movies",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get movies",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{root_url}}/movies",
+									"host": [
+										"{{root_url}}"
+									],
+									"path": [
+										"movies"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2276"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8e4-szW8xF/q/XBqxNfjaLDJzCGJ6rM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 16:40:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 4,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"createdAt\": \"2022-06-18T21:25:39.822Z\",\n            \"updatedAt\": \"2022-06-20T17:42:36.549Z\",\n            \"name\": \"Kung Fu Panda\",\n            \"description\": \"In the Valley of Peace, a land in Ancient China inhabited by anthropomorphic animals, the clumsy panda Po helps his adoptive father Mr. Ping to run their noodle restaurant, but dreams of fighting alongside the Furious Five – Tigress, Monkey, Crane, Viper, and Mantis – a group of kung fu masters trained by Master Shifu.\",\n            \"imageUrl\": \"https://m.media-amazon.com/images/M/MV5BODJkZTZhMWItMDI3Yy00ZWZlLTk4NjQtOTI1ZjU5NjBjZTVjXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_.jpg\",\n            \"favorite\": {\n                \"id\": 46\n            }\n        },\n        {\n            \"id\": 2,\n            \"createdAt\": \"2022-06-19T10:17:04.300Z\",\n            \"updatedAt\": \"2022-06-20T17:50:40.837Z\",\n            \"name\": \"Wall-e\",\n            \"description\": \"WALL•E (Waste Allocation Load Lifter Earth-Class) is the last robot left on Earth, programmed to clean up the planet, one trash cube at a time. However, after 700 years, he’s developed one little glitch—a personality. He’s extremely curious, highly inquisitive, and a little lonely.\",\n            \"imageUrl\": \"https://m.media-amazon.com/images/M/MV5BMjExMTg5OTU0NF5BMl5BanBnXkFtZTcwMjMxMzMzMw@@._V1_.jpg\",\n            \"favorite\": null\n        },\n        {\n            \"id\": 3,\n            \"createdAt\": \"2022-06-19T10:17:11.233Z\",\n            \"updatedAt\": \"2022-06-20T17:52:05.731Z\",\n            \"name\": \"Bolt\",\n            \"description\": \"The days of canine superstar Bolt (John Travolta) are filled with danger and intrigue ... until the cameras stop rolling. But Bolt doesn't know that he's on a TV show; he thinks his amazing powers are real. When Bolt is accidentally shipped from his Hollywood soundstage to the mean streets of New York, he begins his most-amazing adventure: Armed only with his delusions and accompanied by a cat and a hamster, he sets out to to find his owner, Penny\",\n            \"imageUrl\": \"https://m.media-amazon.com/images/I/51SGqarLdFL._AC_.jpg\",\n            \"favorite\": null\n        },\n        {\n            \"id\": 6,\n            \"createdAt\": \"2022-06-19T10:17:41.705Z\",\n            \"updatedAt\": \"2022-06-20T17:53:57.689Z\",\n            \"name\": \"Ponyo\",\n            \"description\": \"The daughter of a masterful wizard and a sea goddess, Ponyo uses her father's magic to transform herself into a young girl and quickly falls in love with Sosuke, but the use of such powerful sorcery causes a dangerous imbalance in the world.\",\n            \"imageUrl\": \"https://image.tmdb.org/t/p/original/yp8vEZflGynlEylxEesbYasc06i.jpg\",\n            \"favorite\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "add movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "The Batman",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Batman is called to intervene when the mayor of Gotham City is murdered. Soon, his investigation leads him to uncover a web of corruption, linked to his own dark past.",
+									"type": "text"
+								},
+								{
+									"key": "imageUrl",
+									"value": "https://m.media-amazon.com/images/M/MV5BOGE2NWUwMDItMjA4Yi00N2Y3LWJjMzEtMDJjZTMzZTdlZGE5XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg",
+									"type": "text"
+								},
+								{
+									"key": "filterIds[0]",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "filter[1]",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{root_url}}/movies",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add movies",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "The Batman",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Batman is called to intervene when the mayor of Gotham City is murdered. Soon, his investigation leads him to uncover a web of corruption, linked to his own dark past.",
+											"type": "text"
+										},
+										{
+											"key": "imageUrl",
+											"value": "https://m.media-amazon.com/images/M/MV5BOGE2NWUwMDItMjA4Yi00N2Y3LWJjMzEtMDJjZTMzZTdlZGE5XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg",
+											"type": "text"
+										},
+										{
+											"key": "filterIds[0]",
+											"value": "6",
+											"type": "text"
+										},
+										{
+											"key": "filter[1]",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{root_url}}/movies",
+									"host": [
+										"{{root_url}}"
+									],
+									"path": [
+										"movies"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "430"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ae-R4YBD9dinj4Dc46FDMCnwZ721P0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 17:00:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 10,\n    \"createdAt\": \"2022-06-21T17:00:56.697Z\",\n    \"updatedAt\": \"2022-06-21T17:00:56.697Z\",\n    \"name\": \"The Batman\",\n    \"description\": \"Batman is called to intervene when the mayor of Gotham City is murdered. Soon, his investigation leads him to uncover a web of corruption, linked to his own dark past.\",\n    \"imageUrl\": \"https://m.media-amazon.com/images/M/MV5BOGE2NWUwMDItMjA4Yi00N2Y3LWJjMzEtMDJjZTMzZTdlZGE5XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "user-create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{root_url}}/users/",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user-create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "aumi.asif364@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{root_url}}/users/",
+									"host": [
+										"{{root_url}}"
+									],
+									"path": [
+										"users",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "282"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11a-flrLJLWOce753GCW8pDYDv3mdGQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 17:03:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 4,\n        \"firstName\": null,\n        \"lastName\": null,\n        \"email\": \"aumi.asif364@gmail.com\"\n    },\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJhdW1pLmFzaWYzNjRAZ21haWwuY29tIiwiaWF0IjoxNjU1ODMxMDM2LCJleHAiOjE2NTU5MTc0MzZ9.YOU2vW_WSDyHH6JLG8BOdiWNHxcPfVluzb-Q4L0fcbo\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Filters",
+			"item": [
+				{
+					"name": "get filter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{root_url}}/filters",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"filters"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get filter",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{root_url}}/filters",
+									"host": [
+										"{{root_url}}"
+									],
+									"path": [
+										"filters"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "701"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2bd-t1MjXgJLfkp8CUPIcUJejJ7k7ZI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 16:44:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"value\": \"2010\",\n        \"filterTypeId\": 1\n    },\n    {\n        \"id\": 2,\n        \"value\": \"2011\",\n        \"filterTypeId\": 1\n    },\n    {\n        \"id\": 3,\n        \"value\": \"2012\",\n        \"filterTypeId\": 1\n    },\n    {\n        \"id\": 4,\n        \"value\": \"2013\",\n        \"filterTypeId\": 1\n    },\n    {\n        \"id\": 5,\n        \"value\": \"2014\",\n        \"filterTypeId\": 1\n    },\n    {\n        \"id\": 6,\n        \"value\": \"action\",\n        \"filterTypeId\": 3\n    },\n    {\n        \"id\": 8,\n        \"value\": \"animation\",\n        \"filterTypeId\": 3\n    },\n    {\n        \"id\": 9,\n        \"value\": \"2008\",\n        \"filterTypeId\": 1\n    },\n    {\n        \"id\": 10,\n        \"value\": \"2009\",\n        \"filterTypeId\": 1\n    },\n    {\n        \"id\": 7,\n        \"value\": \"romance\",\n        \"filterTypeId\": 3\n    },\n    {\n        \"id\": 15,\n        \"value\": \"2015\",\n        \"filterTypeId\": 1\n    },\n    {\n        \"id\": 19,\n        \"value\": \"5\",\n        \"filterTypeId\": 4\n    },\n    {\n        \"id\": 20,\n        \"value\": \"4\",\n        \"filterTypeId\": 4\n    },\n    {\n        \"id\": 21,\n        \"value\": \"3\",\n        \"filterTypeId\": 4\n    },\n    {\n        \"id\": 22,\n        \"value\": \"2\",\n        \"filterTypeId\": 4\n    },\n    {\n        \"id\": 23,\n        \"value\": \"1\",\n        \"filterTypeId\": 4\n    },\n    {\n        \"id\": 24,\n        \"value\": \"2016\",\n        \"filterTypeId\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "add filter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "value",
+									"value": "2016",
+									"type": "text"
+								},
+								{
+									"key": "filterTypeId",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{root_url}}/filters",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"filters"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add filter",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "value",
+											"value": "2016",
+											"type": "text"
+										},
+										{
+											"key": "filterTypeId",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{root_url}}/filters",
+									"host": [
+										"{{root_url}}"
+									],
+									"path": [
+										"filters"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-iC0bX2/ULaIWCJAFRzBKzvkE84E\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 16:43:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 24,\n    \"value\": \"2016\",\n    \"filterTypeId\": 1\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Filter Types",
+			"item": [
+				{
+					"name": "get filters types",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{root_url}}/filterTypes",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"filterTypes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get filters types",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{root_url}}/filterTypes",
+									"host": [
+										"{{root_url}}"
+									],
+									"path": [
+										"filterTypes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1276"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4fc-tNgJVjNY2SR7IB/0eKUKq5gOCgw\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 16:51:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"createdAt\": \"2022-06-18T20:00:47.073Z\",\n        \"updatedAt\": \"2022-06-18T20:00:47.074Z\",\n        \"code\": \"year\",\n        \"name\": \"Year\",\n        \"filters\": [\n            {\n                \"id\": 1,\n                \"value\": \"2010\",\n                \"filterTypeId\": 1\n            },\n            {\n                \"id\": 2,\n                \"value\": \"2011\",\n                \"filterTypeId\": 1\n            },\n            {\n                \"id\": 3,\n                \"value\": \"2012\",\n                \"filterTypeId\": 1\n            },\n            {\n                \"id\": 4,\n                \"value\": \"2013\",\n                \"filterTypeId\": 1\n            },\n            {\n                \"id\": 5,\n                \"value\": \"2014\",\n                \"filterTypeId\": 1\n            },\n            {\n                \"id\": 9,\n                \"value\": \"2008\",\n                \"filterTypeId\": 1\n            },\n            {\n                \"id\": 10,\n                \"value\": \"2009\",\n                \"filterTypeId\": 1\n            },\n            {\n                \"id\": 15,\n                \"value\": \"2015\",\n                \"filterTypeId\": 1\n            },\n            {\n                \"id\": 24,\n                \"value\": \"2016\",\n                \"filterTypeId\": 1\n            }\n        ]\n    },\n    {\n        \"id\": 3,\n        \"createdAt\": \"2022-06-18T21:13:20.713Z\",\n        \"updatedAt\": \"2022-06-18T21:13:20.720Z\",\n        \"code\": \"genre\",\n        \"name\": \"Genre\",\n        \"filters\": [\n            {\n                \"id\": 6,\n                \"value\": \"action\",\n                \"filterTypeId\": 3\n            },\n            {\n                \"id\": 8,\n                \"value\": \"animation\",\n                \"filterTypeId\": 3\n            },\n            {\n                \"id\": 7,\n                \"value\": \"romance\",\n                \"filterTypeId\": 3\n            }\n        ]\n    },\n    {\n        \"id\": 4,\n        \"createdAt\": \"2022-06-20T18:38:11.858Z\",\n        \"updatedAt\": \"2022-06-20T18:38:11.871Z\",\n        \"code\": \"rating\",\n        \"name\": \"IMDB\",\n        \"filters\": [\n            {\n                \"id\": 19,\n                \"value\": \"5\",\n                \"filterTypeId\": 4\n            },\n            {\n                \"id\": 20,\n                \"value\": \"4\",\n                \"filterTypeId\": 4\n            },\n            {\n                \"id\": 21,\n                \"value\": \"3\",\n                \"filterTypeId\": 4\n            },\n            {\n                \"id\": 22,\n                \"value\": \"2\",\n                \"filterTypeId\": 4\n            },\n            {\n                \"id\": 23,\n                \"value\": \"1\",\n                \"filterTypeId\": 4\n            }\n        ]\n    },\n    {\n        \"id\": 6,\n        \"createdAt\": \"2022-06-21T16:50:25.362Z\",\n        \"updatedAt\": \"2022-06-21T16:50:25.380Z\",\n        \"code\": \"director\",\n        \"name\": \"Director\",\n        \"filters\": [\n            {\n                \"id\": 25,\n                \"value\": \"Christopher nolan\",\n                \"filterTypeId\": 6\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "add filterTypes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "code",
+									"value": "director",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Director",
+									"type": "text"
+								},
+								{
+									"key": "filters[0]",
+									"value": "Christopher nolan",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{root_url}}/filterTypes",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"filterTypes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add filterTypes",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "code",
+											"value": "director",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Director",
+											"type": "text"
+										},
+										{
+											"key": "filters[0]",
+											"value": "Christopher nolan",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{root_url}}/filterTypes",
+									"host": [
+										"{{root_url}}"
+									],
+									"path": [
+										"filterTypes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "122"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7a-zNQpnPF/Nb06eEBn/WGxSXmY7Lk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 16:50:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6,\n    \"createdAt\": \"2022-06-21T16:50:25.362Z\",\n    \"updatedAt\": \"2022-06-21T16:50:25.380Z\",\n    \"code\": \"director\",\n    \"name\": \"Director\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "asif@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{root_url}}/auth/login",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "asif@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{root_url}}/auth/login",
+									"host": [
+										"{{root_url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "264"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"108-Rd9JxH+mim9qsGF8IX9kj97fCDo\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 16:33:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 1,\n        \"firstName\": null,\n        \"lastName\": null,\n        \"email\": \"asif@gmail.com\"\n    },\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhc2lmQGdtYWlsLmNvbSIsImlhdCI6MTY1NTgyOTIzMSwiZXhwIjoxNjU1OTE1NjMxfQ.CmoBWS2z5nKt9-1gsHP0-y_ug9Xl6vnCVeVlV4CALM8\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Favorite",
+			"item": [
+				{
+					"name": "get favorite",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{root_url}}/favorites",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post favorite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "movieId",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{root_url}}/favorites",
+							"host": [
+								"{{root_url}}"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "post favorite",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"movieId\" :1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{root_url}}/favorites",
+									"host": [
+										"{{root_url}}"
+									],
+									"path": [
+										"favorites"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "110"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6e-mrmse2l6nKx5P3aT9GFdhHnQ1S0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Jun 2022 17:12:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 53,\n    \"createdAt\": \"2022-06-21T17:12:42.720Z\",\n    \"updatedAt\": \"2022-06-21T17:12:42.721Z\",\n    \"movieId\": 1,\n    \"userId\": 1\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
