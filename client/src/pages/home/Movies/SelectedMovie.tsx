@@ -17,7 +17,7 @@ const SelectedMovie = (props: Props) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { filters }: any = selectedMovieData || {};
   useEffect(() => {
-    dispatch(getMovieById({ url: `/movies/${movieId}` }));
+    movieId && dispatch(getMovieById({ url: `/movies/${movieId}` }));
   }, [movieId]);
 
   console.log(selectedMovieData);
