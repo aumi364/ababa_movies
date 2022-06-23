@@ -1,13 +1,11 @@
-import React from "react";
-import Input from "../../components/FormElements/Input";
-import formStyle from "../../components/FormElements/FormElements.module.css";
-import Button from "../../components/Button/Button";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useAppDispatch } from "../../app/hooks";
-import { loginReq } from "../../slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../../app/store";
 import { Navigate } from "react-router-dom";
+import { AppDispatch } from "../../app/store";
+import Button from "../../components/Button/Button";
+import formStyle from "../../components/FormElements/FormElements.module.css";
+import Input from "../../components/FormElements/Input";
+import { loginReq } from "../../slices/authSlice";
 type Props = {};
 
 type Form = {
@@ -23,7 +21,7 @@ const LoginForm = (props: Props) => {
   } = useForm<Form>();
 
   const dispatch = useDispatch<AppDispatch>();
-  const { isSuccess } = useSelector((state: any) => state.auth);
+  const { isSuccess, loading } = useSelector((state: any) => state.auth);
 
   const onSubmit: SubmitHandler<Form> = (data) => {
     console.log(data);
@@ -55,7 +53,9 @@ const LoginForm = (props: Props) => {
             required
             error={errors.password}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit" loading={loading}>
+            Submit
+          </Button>
           {/* {console.log(errors)} */}
         </form>
       )}

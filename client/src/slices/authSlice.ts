@@ -48,7 +48,7 @@ const AuthSlice = createSlice({
     });
 
     builder.addCase(loginReq.pending, (state, action: PayloadAction<any>) => {
-      state.loading = true;
+      state.loading = false;
       state.isSuccess = false;
       localStorage.removeItem("token");
     });

@@ -1,14 +1,15 @@
-import React from "react";
+import CustomSpinner from "./../Loader/CustomSpinner";
 import style from "./Button.module.css";
 type Props = {
   children: any;
   type?: any;
+  loading: boolean;
 };
 
-const Button = ({ children, type }: Props) => {
+const Button = ({ children, type, loading }: Props) => {
   return (
     <button className={style.Button} type={type}>
-      {children}
+      {loading ? <CustomSpinner size={10} /> : children}
     </button>
   );
 };

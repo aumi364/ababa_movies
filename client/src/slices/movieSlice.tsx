@@ -60,6 +60,7 @@ const MovieSlice = createSlice({
       (state, action: PayloadAction<any>) => {
         state.data = action.payload?.data;
         state.count = action.payload?.count;
+        state.movieId = action.payload?.data?.[0]?.id;
         state.loading = false;
       }
     );

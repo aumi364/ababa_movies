@@ -9,6 +9,7 @@ import style from "../Home.module.css";
 import Search from "../../../components/FormElements/Search";
 import usePagination from "../../../hooks/usePagination";
 import Pagination from "../../../components/Pagination/Pagination";
+import PageLoader from "../../../components/Loader/PageLoader";
 
 type Props = {};
 
@@ -20,7 +21,7 @@ const MovieListContainer = (props: Props) => {
   const dispatch = useDispatch<AppDispatch>();
   const { data, count, loading } = useSelector((state: any) => state.movie);
   const [name, setName] = useState("");
-  //console.log(movieState);
+  console.log(loading);
   const movieUrl = configUrl({
     endpoint: "/movies",
     query: {
@@ -48,32 +49,35 @@ const MovieListContainer = (props: Props) => {
     formState: { errors },
   } = useForm<Form>();
   return (
-    <div className={style.moviesContainer}>
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Search
-            register={register}
-            name="name"
-            type="name"
-            placeholder="Name of the movie"
-          />
-        </form>
-      </div>
-      <Pagination {...{ offset, count, pageLimit, handlePageChange }} />
-      <div className={style.movieListContainer}>
-        {data?.map((movie: any) => {
-          return (
-            <Card
-              key={movie?.id}
-              image={movie?.imageUrl}
-              description={movie?.description}
-              name={movie?.name}
-              onClick={selectedMovieIdHandler(movie?.id)}
+    <>
+      <div className={style.moviesContainer}>
+        <div>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Search
+              register={register}
+              name="name"
+              type="name"
+              placeholder="Name of the movie"
             />
-          );
-        })}
+          </form>
+        </div>
+        <Pagination {...{ offset, count, pageLimit, handlePageChange }} />
+        <div className={style.movieListContainer}>
+          {data?.map((movie: any) => {
+            return (
+              <Card
+                key={movie?.id}
+                image={movie?.imageUrl}
+                description={movie?.description}
+                name={movie?.name}
+                onClick={selectedMovieIdHandler(movie?.id)}
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
+      <PageLoader loading={loading} />
+    </>
   );
 };
 
