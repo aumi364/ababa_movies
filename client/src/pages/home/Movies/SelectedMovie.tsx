@@ -17,9 +17,10 @@ const SelectedMovie = (props: Props) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { filters }: any = selectedMovieData || {};
   useEffect(() => {
-    movieId && dispatch(getMovieById({ url: `/movies/${movieId}` }));
+    dispatch(getMovieById({ url: `/movies/${movieId}` }));
   }, [movieId]);
 
+  console.log(selectedMovieData);
   const addTofavoriteHandler = (id: any) => {
     return () => {
       dispatch(addToFavorite({ url: `/favorites/`, formData: { movieId } }));
@@ -57,10 +58,10 @@ const SelectedMovie = (props: Props) => {
           <div className={style.movieBody}>
             <div className={style.movieCategories}>
               <div className={style.genres}>
-                <p>Genre - {filters?.genre.join(", ")}</p>
+                <p>Genre - {filters?.genre?.join(", ")}</p>
               </div>
               <div className={style.genres}>
-                <p>Year - {filters?.year[0]}</p>
+                <p>Year - {filters?.year?.[0]}</p>
               </div>
             </div>
             <div className={style.movieDescription}>
