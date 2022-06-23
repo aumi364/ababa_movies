@@ -11,12 +11,10 @@ const container = document.getElementById("root")!;
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Toaster position="top-center" reverseOrder={false} />
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <Toaster position="top-center" reverseOrder={false} />
+    <App />
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
